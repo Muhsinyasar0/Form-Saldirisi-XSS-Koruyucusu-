@@ -1,0 +1,27 @@
+[package]
+name = "crypto-vault"
+version = "0.1.0"
+edition = "2021"
+description = "AES-256-GCM şifreleme + güvenli anahtar yönetimi demo projesi"
+
+[dependencies]
+# Google'ın kriptografi kütüphanesi - OpenSSL'den daha güvenli
+ring = "0.17"
+
+# Güvenli memory yönetimi (sıfırlama garantisi)
+zeroize = { version = "1.7", features = ["derive"] }
+
+# Random sayı üretimi
+getrandom = "0.2"
+
+# Hex encoding/decoding (debug çıktısı için)
+hex = "0.4"
+
+# Hata yönetimi
+thiserror = "1.0"
+
+[profile.release]
+# Release modda stack trace bilgisi kaldır
+debug = false
+# Optimizasyon seviyesi (memory layout'u düzelt)
+opt-level = 3
